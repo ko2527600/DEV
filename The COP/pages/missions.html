@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Missions - THE CHURCH OF PENTECOST LAPAZ CENTRAL</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+        .missions-hero {
+            position: relative;
+            height: calc(100vh - 140px);
+            background-image: url('../images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 140px;
+            z-index: 1;
+        }
+        .missions-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(35, 62, 124, 0.8);
+            z-index: 1;
+        }
+        .missions-hero-content {
+            position: relative;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            z-index: 2;
+        }
+        .missions-hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        .missions-hero-content p {
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        .missions-content {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .mission-section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .mission-section h2 {
+            color: #233e7c;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .mission-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #ffcc00;
+        }
+        
+        .mission-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .mission-card {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .mission-card i {
+            font-size: 3rem;
+            color: #233e7c;
+            margin-bottom: 1rem;
+        }
+        
+        .mission-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .mission-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Dropdown Menu Styles */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: #233e7c;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        .dropdown-menu.show {
+            display: block;
+        }
+        .dropdown-menu li {
+            list-style: none;
+        }
+        .dropdown-menu li a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-menu li a:hover {
+            background-color: #1a3560;
+        }
+        .dropdown {
+            position: relative;
+        }
+        
+        @media (max-width: 768px) {
+            .missions-hero {
+                height: calc(70vh - 120px);
+                margin-top: 120px;
+            }
+            .missions-hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .missions-hero-content p {
+                font-size: 1.2rem;
+            }
+            .mission-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Navigation -->
+    <div id="fixed-header-container">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="top-bar-content">
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <a href="https://web.facebook.com/thecoplc" class="social-icon" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/thecoplc?s=11&t=Hp2vQ5HEypU3SEowUSDWGA" class="social-icon" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCEYJLi3phdzLXeg_ZQI3V8g" class="social-icon" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.instagram.com/thecoplapazcentral/?hl=en" class="social-icon" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@thecoplapazcentral?lang=en" class="social-icon" target="_blank">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <a href="#" class="action-btn">
+                        <i class="fas fa-broadcast-tower"></i>
+                        <span>ONLINE RADIO</span>
+                    </a>
+                    <a href="https://maps.app.goo.gl/4Ne25oWe4e5LGDSG7?g_st=ic" class="action-btn" target="_blank">
+                        <i class="fas fa-church"></i>
+                        <span>FIND A CHURCH</span>
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i class="fas fa-play"></i>
+                        <span>WATCH LIVE SERVICE</span>
+                    </a>
+                </div>
+                
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <div class="lang-btn">
+                        <img src="../images/uk-flag.png" alt="English" class="flag-icon">
+                        <span class="lang-text">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation (blue background) -->
+        <header id="site-header">
+            <nav class="navbar main-navbar">
+                <div class="logo">
+                    <img src="../images/logo.png" alt="Church Logo" class="logo-img">
+                    <div class="logo-text">
+                        <span class="logo-title">THE CHURCH OF PENTECOST</span>
+                        <span class="logo-subtitle">LAPAZ CENTRAL</span>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">ABOUT</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="history.html">History</a></li>
+                            <li><a href="tenant-beliefs.html">Tenants & Beliefs</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="auditorium.html">Auditorium</a></li>
+                            <li><a href="vision-2028.html">Vision 2028</a></li>
+                            <li><a href="board-committees.html">Board & Committees</a></li>
+                            <li><a href="our-activities.html">Our Activities</a></li>
+                            <li><a href="statistics.html">Statistics</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">LEADERSHIP</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="pastors.html">Pastors</a></li>
+                            <li><a href="elders.html">Elders</a></li>
+                            <li><a href="deacons.html">Deacons</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">MINISTRIES</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="children-ministry.html">Children's Ministry</a></li>
+                            <li><a href="youth-ministry.html">Youth Ministry</a></li>
+                            <li><a href="women-ministry.html">Women's Ministry</a></li>
+                            <li><a href="pemem-ministry.html">PEMEM</a></li>
+                            <li><a href="evangelism-ministry.html">Evangelism Ministry</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="missions.html" class="dropdown-toggle">MISSIONS</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="missions.html#local">Local Missions</a></li>
+                            <li><a href="missions.html#international">International Missions</a></li>
+                            <li><a href="missions.html#partners">Mission Partners</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="media.html" class="dropdown-toggle">MEDIA</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="media.html#sermons">Sermons</a></li>
+                            <li><a href="media.html#videos">Videos</a></li>
+                            <li><a href="media.html#photos">Photo Gallery</a></li>
+                            <li><a href="media.html#news">News & Events</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+                <div class="nav-search">
+                    <i class="fas fa-search"></i>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <!-- Missions Hero Section -->
+    <section class="missions-hero">
+        <div class="missions-hero-content">
+            <h1>Our Missions</h1>
+            <p>Spreading the Gospel to the ends of the earth</p>
+        </div>
+    </section>
+
+    <!-- Missions Content -->
+    <div class="missions-content">
+        <!-- Local Missions Section -->
+        <section id="local" class="mission-section">
+            <h2>Local Missions</h2>
+            <div class="mission-cards">
+                <div class="mission-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Community Outreach</h3>
+                    <p>Reaching out to our local community through various programs, food distribution, and social services to meet the needs of our neighbors.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Healthcare Ministry</h3>
+                    <p>Providing medical care and health education to underserved communities in the Lapaz area and surrounding districts.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Education Support</h3>
+                    <p>Supporting local schools and providing educational resources, scholarships, and literacy programs for children and adults.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- International Missions Section -->
+        <section id="international" class="mission-section">
+            <h2>International Missions</h2>
+            <div class="mission-cards">
+                <div class="mission-card">
+                    <i class="fas fa-globe-africa"></i>
+                    <h3>African Missions</h3>
+                    <p>Supporting church planting and evangelism efforts across West Africa, strengthening existing churches and establishing new congregations.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-plane"></i>
+                    <h3>Global Outreach</h3>
+                    <p>Sending missionaries and supporting evangelistic efforts in Europe, America, and other continents where The Church of Pentecost has presence.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Disaster Relief</h3>
+                    <p>Providing emergency aid and disaster relief to communities affected by natural disasters and humanitarian crises worldwide.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Partners Section -->
+        <section id="partners" class="mission-section">
+            <h2>Mission Partners</h2>
+            <div class="mission-cards">
+                <div class="mission-card">
+                    <i class="fas fa-church"></i>
+                    <h3>Partner Churches</h3>
+                    <p>Collaborating with sister churches and denominations to maximize our evangelistic impact and share resources for kingdom work.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Mission Organizations</h3>
+                    <p>Working alongside established mission organizations to reach unreached people groups and support existing mission fields.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-donate"></i>
+                    <h3>Funding Partners</h3>
+                    <p>Partnering with individuals, businesses, and organizations who support our mission work through financial contributions and resources.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>THE CHURCH OF PENTECOST</h3>
+                <p>Lapaz District</p>
+                <p>Spreading the gospel and serving our community</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://web.facebook.com/thecoplc" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/thecoplc?s=11&t=Hp2vQ5HEypU3SEowUSDWGA" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/thecoplapazcentral/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UCEYJLi3phdzLXeg_ZQI3V8g" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@thecoplapazcentral?lang=en" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 THE CHURCH OF PENTECOST LAPAZ DISTRICT. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+    <script src="../dropdown.js"></script>
+</body>
+</html>""

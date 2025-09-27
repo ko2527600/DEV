@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "824978143034",
+    "project_id": "farmers-link-5a916",
+    "storage_bucket": "farmers-link-5a916.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824978143034:android:24f3652a5635dc140bc203",
+        "android_client_info": {
+          "package_name": "com.farmlinkgh.farmlink_gh"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3dWB4Lv7SEbLnmBmZMkaMmKFR-V4aV2U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

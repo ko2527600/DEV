@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification Complete - Medication Reminder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            color: #4CAF50;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 16px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 32px;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .success-message {
+            background: #e8f5e8;
+            border: 2px solid #4CAF50;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            color: #2e7d2e;
+            font-weight: 500;
+        }
+
+        .app-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin: 8px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .app-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .instructions {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 24px;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            text-align: left;
+        }
+
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .footer {
+            margin-top: 32px;
+            color: #999;
+            font-size: 12px;
+        }
+
+        .loading {
+            display: none;
+            color: #667eea;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🎉</div>
+        <h1>Verification Complete!</h1>
+        <p class="subtitle">Your email has been successfully verified. Welcome to Medication Reminder!</p>
+        
+        <div class="success-message">
+            ✅ Email verification successful<br>
+            🔐 Your account is now fully activated
+        </div>
+        
+        <a href="#" class="app-button" onclick="returnToApp()">Open Medication Reminder App</a>
+        
+        <div class="instructions">
+            <strong>How to continue:</strong>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>Close this browser tab</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>Open the Medication Reminder app</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>Sign in with your verified email</div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>Start managing your medications!</div>
+            </div>
+        </div>
+        
+        <div class="loading" id="loading">
+            <p>🔄 Attempting to open app...</p>
+        </div>
+        
+        <div class="footer">
+            Medication Reminder App © 2024<br>
+            Having trouble? Contact support at support@medicationreminder.com
+        </div>
+    </div>
+
+    <script>
+        function returnToApp() {
+            document.getElementById('loading').style.display = 'block';
+            
+            // Try various methods to return to the app
+            setTimeout(function() {
+                // Try deep link (will be configured later)
+                window.location.href = 'medicationreminder://auth/verified';
+                
+                // Fallback: show manual instructions
+                setTimeout(function() {
+                    document.getElementById('loading').style.display = 'none';
+                    alert('Please manually open the Medication Reminder app on your device.');
+                }, 1000);
+            }, 500);
+        }
+        
+        // Auto-processing when page loads
+        window.onload = function() {
+            // Extract any tokens from URL if needed
+            const urlParams = new URLSearchParams(window.location.search);
+            const fragment = window.location.hash;
+            
+            // Log for debugging (remove in production)
+            console.log('Verification callback received');
+            console.log('URL params:', urlParams.toString());
+            console.log('Fragment:', fragment);
+            
+            // Show success animation
+            setTimeout(function() {
+                document.querySelector('.icon').style.animation = 'bounce 1s ease-in-out';
+            }, 500);
+        };
+    </script>
+</body>
+</html>

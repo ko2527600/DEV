@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Children's Ministry - THE CHURCH OF PENTECOST LAPAZ CENTRAL</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: #233e7c;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        .dropdown-menu.show {
+            display: block;
+        }
+        .dropdown-menu li {
+            list-style: none;
+        }
+        .dropdown-menu li a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-menu li a:hover {
+            background-color: #1a3560;
+        }
+        .dropdown {
+            position: relative;
+        }
+
+        /* Children's Ministry Slideshow Styles */
+        .children-slideshow {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+            margin-top: 150px;
+            z-index: 1;
+        }
+        
+        .children-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+        }
+        
+        .children-slide.active {
+            opacity: 1;
+        }
+        
+        .children-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: transparent;
+            z-index: 1;
+        }
+        
+        .children-image-section {
+            flex: 1;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .children-slide-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        
+        .children-slide-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        
+        .children-slide-content p {
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+        
+        .children-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 3;
+        }
+        
+        .children-nav-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .children-nav-btn.prev {
+            left: 20px;
+        }
+        
+        .children-nav-btn.next {
+            right: 20px;
+        }
+        
+        .children-slide-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+        
+        .children-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .children-dot.active {
+            background: white;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn i {
+            font-size: 1.2rem;
+        }
+
+        /* Notification Bell */
+        .notification-bell {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: #e74c3c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification-bell:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .children-slideshow {
+                height: 50vh;
+                margin-top: 130px;
+            }
+            
+            .children-slide-content h1 {
+                font-size: 2rem;
+            }
+            
+            .children-slide-content p {
+                font-size: 1rem;
+            }
+
+            .children-nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .children-nav-btn.prev {
+                left: 15px;
+            }
+            
+            .children-nav-btn.next {
+                right: 15px;
+            }
+
+            .whatsapp-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 16px;
+                font-size: 0.9rem;
+            }
+
+            .notification-bell {
+                bottom: 20px;
+                left: 20px;
+                width: 45px;
+                height: 45px;
+            }
+            
+            /* Vision & Mission responsive */
+            .vision-mission-section {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            
+            .vision-mission-panel {
+                padding: 30px !important;
+            }
+            
+            .vision-mission-panel h2 {
+                font-size: 1.5rem !important;
+            }
+            
+            .vision-mission-panel p {
+                font-size: 1rem !important;
+            }
+            
+            /* About Us responsive */
+            .about-us-section {
+                grid-template-columns: 1fr !important;
+                gap: 40px !important;
+            }
+            
+            .about-us-content h2 {
+                font-size: 2rem !important;
+            }
+            
+            .about-us-content h3 {
+                font-size: 1.5rem !important;
+            }
+            
+            .about-us-content p {
+                font-size: 1rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Navigation -->
+    <div id="fixed-header-container">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="top-bar-content">
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <a href="https://web.facebook.com/thecoplc" class="social-icon" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/thecoplc?s=11&t=Hp2vQ5HEypU3SEowUSDWGA" class="social-icon" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCEYJLi3phdzLXeg_ZQI3V8g" class="social-icon" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.instagram.com/thecoplapazcentral/?hl=en" class="social-icon" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@thecoplapazcentral?lang=en" class="social-icon" target="_blank">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <a href="#" class="action-btn">
+                        <i class="fas fa-broadcast-tower"></i>
+                        <span>ONLINE RADIO</span>
+                    </a>
+                    <a href="https://maps.app.goo.gl/4Ne25oWe4e5LGDSG7?g_st=ic" class="action-btn" target="_blank">
+                        <i class="fas fa-church"></i>
+                        <span>FIND A CHURCH</span>
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i class="fas fa-play"></i>
+                        <span>WATCH LIVE SERVICE</span>
+                    </a>
+                </div>
+                
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <div class="lang-btn">
+                        <img src="../images/uk-flag.png" alt="English" class="flag-icon">
+                        <span class="lang-text">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation (blue background) -->
+        <header id="site-header">
+            <nav class="navbar main-navbar">
+                <div class="logo">
+                    <img src="../images/logo.png" alt="Church Logo" class="logo-img">
+                    <div class="logo-text">
+                        <span class="logo-title">THE CHURCH OF PENTECOST</span>
+                        <span class="logo-subtitle">LAPAZ CENTRAL</span>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">ABOUT</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="history.html">History</a></li>
+                            <li><a href="tenant-beliefs.html">Tenants & Beliefs</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="auditorium.html">Auditorium</a></li>
+                            <li><a href="vision-2028.html">Vision 2028</a></li>
+                            <li><a href="board-committees.html">Board & Committees</a></li>
+                            <li><a href="our-activities.html">Our Activities</a></li>
+                            <li><a href="statistics.html">Statistics</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">LEADERSHIP</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="pastors.html">Pastors</a></li>
+                            <li><a href="elders.html">Elders</a></li>
+                            <li><a href="deacons.html">Deacons</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">MINISTRIES</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="children-ministry.html">Children's Ministry</a></li>
+                            <li><a href="youth-ministry.html">Youth Ministry</a></li>
+                            <li><a href="women-ministry.html">Women's Ministry</a></li>
+                            <li><a href="pemem-ministry.html">PEMEM</a></li>
+                            <li><a href="evangelism-ministry.html">Evangelism Ministry</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">MISSIONS</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="missions.html#local">Local Missions</a></li>
+                            <li><a href="missions.html#international">International Missions</a></li>
+                            <li><a href="missions.html#partners">Mission Partners</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="media.html" class="dropdown-toggle">MEDIA</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="media.html#sermons">Sermons</a></li>
+                            <li><a href="media.html#videos">Videos</a></li>
+                            <li><a href="media.html#photos">Photo Gallery</a></li>
+                            <li><a href="media.html#news">News & Events</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+                <div class="nav-search">
+                    <i class="fas fa-search"></i>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <!-- Children's Ministry Merged Image Hero Section -->
+    <section class="children-slideshow">
+        <div class="children-slide active">
+            <div class="children-image-section" style="background-image: url('../images/Ministry/mini1-48-of-106-768x768.webp');"></div>
+            <div class="children-image-section" style="background-image: url('../images/Ministry/mini2-224-of-256-768x768.jpg');"></div>
+            <div class="children-image-section" style="background-image: url('../images/Ministry/mini3-66-of-106-1-768x768.webp');"></div>
+        </div>
+        <div class="children-slide">
+            <div class="children-image-section" style="background-image: url('../images/Ministry/mini4-101-of-106-768x768.webp');"></div>
+            <div class="children-image-section" style="background-image: url('../images/Ministry/mini5-1-768x768.webp');"></div>
+            <div class="children-image-section" style="background-image: url('../images/Ministry/mini1-48-of-106-768x768.webp');"></div>
+        </div>
+        <div class="children-slide">
+            <div class="children-image-section" style="background-image: url('../images/Ministry/mini2-224-of-256-768x768.jpg');"></div>
+            <div class="children-image-section" style="background-image: url('../images/Ministry/mini3-66-of-106-1-768x768.webp');"></div>
+            <div class="children-image-section" style="background-image: url('../images/Ministry/mini4-101-of-106-768x768.webp');"></div>
+        </div>
+        
+        <button class="children-nav-btn prev" onclick="changeChildrenSlide(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="children-nav-btn next" onclick="changeChildrenSlide(1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <div class="children-slide-dots">
+            <span class="children-dot active" onclick="currentChildrenSlide(1)"></span>
+            <span class="children-dot" onclick="currentChildrenSlide(2)"></span>
+            <span class="children-dot" onclick="currentChildrenSlide(3)"></span>
+        </div>
+    </section>
+
+    <!-- Vision & Mission Section -->
+    <section style="padding: 80px 20px; background: #233e7c;">
+        <div class="vision-mission-section" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+            <!-- Vision Panel -->
+            <div class="vision-mission-panel" style="background: rgba(35, 62, 124, 0.9); padding: 40px; border-radius: 10px; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('../images/Ministry/mini1-48-of-106-768x768.webp'); background-size: cover; background-position: center; opacity: 0.1; z-index: 1;"></div>
+                <div style="position: relative; z-index: 2;">
+                    <h2 style="color: white; font-size: 2rem; font-weight: bold; margin-bottom: 20px; text-transform: uppercase;">OUR VISION</h2>
+                    <p style="color: white; font-size: 1.1rem; line-height: 1.6;">
+                        To become a global Pentecostal church that is culturally relevant in vibrant evangelism, church planting, discipleship and holistic ministry.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Mission Panel -->
+            <div class="vision-mission-panel" style="background: rgba(35, 62, 124, 0.9); padding: 40px; border-radius: 10px; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('../images/Ministry/mini2-224-of-256-768x768.jpg'); background-size: cover; background-position: center; opacity: 0.1; z-index: 1;"></div>
+                <div style="position: relative; z-index: 2;">
+                    <h2 style="color: white; font-size: 2rem; font-weight: bold; margin-bottom: 20px; text-transform: uppercase;">OUR MISSION</h2>
+                    <p style="color: white; font-size: 1.1rem; line-height: 1.6;">
+                        We exist to establish responsible and self-sustaining churches filled with committed, Spirit-filled Christians of character, who will impact their communities.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us & Children's Ministry Section -->
+    <section style="padding: 80px 20px; background: #f8f9fa;">
+        <div class="about-us-section" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr; gap: 60px; align-items: start;">
+            <!-- Content Side -->
+            <div class="about-us-content">
+                <h2 style="color: #233e7c; font-size: 2.5rem; font-weight: bold; margin-bottom: 10px;">ABOUT US</h2>
+                <h3 style="color: #233e7c; font-size: 2rem; font-weight: bold; margin-bottom: 30px;">CHILDREN'S MINISTRY</h3>
+                
+                <div style="color: #333; line-height: 1.8; font-size: 1.1rem;">
+                    <p style="margin-bottom: 20px;">
+                        The Children's Ministry is the children's wing of the Church and meets on Sundays before the adult service.
+                    </p>
+                    
+                    <p style="margin-bottom: 20px;">
+                        It trains children on biblical precepts of balanced growth. The lessons include Salvation, Worship, and Obedience, supported by games, quizzes, and "Sword Drills".
+                    </p>
+                    
+                    <p style="margin-bottom: 20px;">
+                        The Ministry also ministers to primary schools and orphans, organizes vacation Bible schools and camp meetings, conducts counseling sessions, organizes media evangelism, and other specialized children-related functions.
+                    </p>
+                    
+                    <p style="margin-bottom: 20px;">
+                        Pastor Samuel Avornyo is the current Director of the Children's Ministry. He is assisted by Elder Lawyer Alfred Aidoo. Prophet David Kankam Beditor is the Patron of the Children's Ministry.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Image Side -->
+            <div style="text-align: center;">
+                <img src="../images/Ministry/children-768x768.webp" alt="Pastor Samuel Avornyo - Director of Children's Ministry" style="width: 100%; max-width: 400px; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>THE CHURCH OF PENTECOST</h3>
+                <p>Lapaz Central</p>
+                <p>Spreading the gospel and serving our community</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="children-ministry.html">Children's Ministry</a></li>
+                    <li><a href="youth-ministry.html">Youth Ministry</a></li>
+                    <li><a href="women-ministry.html">Women's Ministry</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://web.facebook.com/thecoplc" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/thecoplc?s=11&t=Hp2vQ5HEypU3SEowUSDWGA" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/thecoplapazcentral/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UCEYJLi3phdzLXeg_ZQI3V8g" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@thecoplapazcentral?lang=en" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 THE CHURCH OF PENTECOST LAPAZ CENTRAL. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/233201205008" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>Chat with us on WhatsApp</span>
+    </a>
+
+    <!-- Notification Bell -->
+    <div class="notification-bell" title="Notifications">
+        <i class="fas fa-bell"></i>
+    </div>
+
+    <script src="../main.js"></script>
+    <script src="../dropdown.js"></script>
+    
+    <script>
+        let childrenSlideIndex = 1;
+        
+        function showChildrenSlides(n) {
+            let slides = document.getElementsByClassName("children-slide");
+            let dots = document.getElementsByClassName("children-dot");
+            
+            if (n > slides.length) { childrenSlideIndex = 1; }
+            if (n < 1) { childrenSlideIndex = slides.length; }
+            
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            slides[childrenSlideIndex - 1].classList.add("active");
+            dots[childrenSlideIndex - 1].classList.add("active");
+        }
+        
+        function changeChildrenSlide(n) {
+            showChildrenSlides(childrenSlideIndex += n);
+        }
+        
+        function currentChildrenSlide(n) {
+            showChildrenSlides(childrenSlideIndex = n);
+        }
+        
+        // Auto-advance slides every 5 seconds
+        setInterval(function() {
+            changeChildrenSlide(1);
+        }, 5000);
+        
+        // Initialize slideshow
+        showChildrenSlides(childrenSlideIndex);
+    </script>
+</body>
+</html>

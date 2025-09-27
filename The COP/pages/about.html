@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - THE CHURCH OF PENTECOST LAPAZ DISTRICT</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: #233e7c;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        .dropdown-menu.show {
+            display: block;
+        }
+        .dropdown-menu li {
+            list-style: none;
+        }
+        .dropdown-menu li a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-menu li a:hover {
+            background-color: #1a3560;
+        }
+        .dropdown {
+            position: relative;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn i {
+            font-size: 1.2rem;
+        }
+
+        /* Notification Bell */
+        .notification-bell {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: #e74c3c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification-bell:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .whatsapp-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 16px;
+                font-size: 0.9rem;
+            }
+
+            .notification-bell {
+                bottom: 20px;
+                left: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Navigation -->
+    <div id="fixed-header-container">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="top-bar-content">
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <a href="https://web.facebook.com/thecoplc" class="social-icon" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/thecoplc?s=11&t=Hp2vQ5HEypU3SEowUSDWGA" class="social-icon" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCEYJLi3phdzLXeg_ZQI3V8g" class="social-icon" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.instagram.com/thecoplapazcentral/?hl=en" class="social-icon" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@thecoplapazcentral?lang=en" class="social-icon" target="_blank">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <a href="#" class="action-btn">
+                        <i class="fas fa-broadcast-tower"></i>
+                        <span>ONLINE RADIO</span>
+                    </a>
+                    <a href="https://maps.app.goo.gl/4Ne25oWe4e5LGDSG7?g_st=ic" class="action-btn" target="_blank">
+                        <i class="fas fa-church"></i>
+                        <span>FIND A CHURCH</span>
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i class="fas fa-play"></i>
+                        <span>WATCH LIVE SERVICE</span>
+                    </a>
+                </div>
+                
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <div class="lang-btn">
+                        <img src="../images/uk-flag.png" alt="English" class="flag-icon">
+                        <span class="lang-text">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation (blue background) -->
+        <header id="site-header">
+            <nav class="navbar main-navbar">
+                <div class="logo">
+                    <img src="../images/logo.png" alt="Church Logo" class="logo-img">
+                    <div class="logo-text">
+                        <span class="logo-title">THE CHURCH OF PENTECOST</span>
+                        <span class="logo-subtitle">LAPAZ CENTRAL</span>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">ABOUT</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="history.html">History</a></li>
+                            <li><a href="tenant-beliefs.html">Tenants & Beliefs</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="auditorium.html">Auditorium</a></li>
+                            <li><a href="vision-2028.html">Vision 2028</a></li>
+                            <li><a href="board-committees.html">Board & Committees</a></li>
+                            <li><a href="our-activities.html">Our Activities</a></li>
+                            <li><a href="statistics.html">Statistics</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">LEADERSHIP</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="leadership.html#pastors">Pastors</a></li>
+                            <li><a href="leadership.html#elders">Elders</a></li>
+                            <li><a href="leadership.html#deacons">Deacons</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">MINISTRIES</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="ministries.html#children">Children's Ministry</a></li>
+                            <li><a href="ministries.html#youth">Youth Ministry</a></li>
+                            <li><a href="ministries.html#worship">Worship Ministry</a></li>
+                            <li><a href="ministries.html#outreach">Outreach Ministry</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="missions.html" class="dropdown-toggle">MISSIONS</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="missions.html#local">Local Missions</a></li>
+                            <li><a href="missions.html#international">International Missions</a></li>
+                            <li><a href="missions.html#partners">Mission Partners</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="media.html" class="dropdown-toggle">MEDIA</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="media.html#sermons">Sermons</a></li>
+                            <li><a href="media.html#videos">Videos</a></li>
+                            <li><a href="media.html#photos">Photo Gallery</a></li>
+                            <li><a href="media.html#news">News & Events</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+                <div class="nav-search">
+                    <i class="fas fa-search"></i>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <main style="min-height: 400px; display: flex; align-items: center; justify-content: center;">
+        <h1>About Us Page</h1>
+    </main>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/233201205008" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>Chat with us on WhatsApp</span>
+    </a>
+
+    <!-- Notification Bell -->
+    <div class="notification-bell" title="Notifications">
+        <i class="fas fa-bell"></i>
+    </div>
+
+    <script src="../dropdown.js"></script>
+</body>
+</html> 

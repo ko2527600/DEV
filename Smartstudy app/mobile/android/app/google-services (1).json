@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "91798494947",
+    "project_id": "smartstudy-ghana",
+    "storage_bucket": "smartstudy-ghana.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91798494947:android:e3eeff8e53f2fc3bc3efd6",
+        "android_client_info": {
+          "package_name": "com.example.mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNOUTI-8dEl-qXic3mRNJu7lr1K0rcYDg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

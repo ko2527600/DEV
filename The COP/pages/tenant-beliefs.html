@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tenants & Beliefs - THE CHURCH OF PENTECOST LAPAZ CENTRAL</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        .beliefs-hero {
+            position: relative;
+            height: calc(100vh - 140px);
+            background-image: url('../images/tenet.jpg');
+            background-size: contain;
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-color: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 140px;
+            z-index: 1;
+        }
+
+        /* Removed overlay to show the original image design */
+
+        .beliefs-hero-content {
+            position: relative;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .beliefs-hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .beliefs-hero-content p {
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            line-height: 1.4;
+        }
+
+        /* Responsive adjustments for hero */
+        @media (max-width: 768px) {
+            .beliefs-hero {
+                height: calc(70vh - 120px);
+                margin-top: 120px;
+                background-size: cover;
+                background-position: center;
+            }
+
+            .beliefs-hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .beliefs-hero-content p {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: #233e7c;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+        }
+
+        .dropdown-menu li a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: #1a3560;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .main-content-container {
+            display: flex;
+            flex-wrap: wrap;
+            /* Allows items to wrap on smaller screens */
+            padding: 20px 0;
+            /* Keep vertical padding, remove horizontal */
+            /* max-width: 1200px; /* Adjust max-width as needed */
+            margin: 0 auto;
+            /* Remove horizontal margin */
+            background-color: #f5f5f5;
+            /* Light grey background color */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+        }
+
+        .tenets-content {
+            flex: 3;
+            /* Content takes up 3 parts of the space */
+            padding-right: 20px;
+            box-sizing: border-box;
+            /* Include padding in the element's total width */
+        }
+
+        .ad-sidebar {
+            flex: 1;
+            /* Sidebar takes up 1 part of the space */
+            min-width: 250px;
+            /* Minimum width for the sidebar */
+            /* Add styles for images if needed, e.g., max-width: 100%; height: auto; */
+        }
+
+        .tenets-content h3 {
+            background-color: #e0e0e0;
+            /* Light grey background for headings */
+            padding: 10px 15px;
+            /* Padding around heading text */
+            margin-top: 20px;
+            /* Space above headings */
+            margin-bottom: 10px;
+            /* Space below headings */
+            font-size: 1.5rem;
+            /* Adjust font size as needed */
+            font-family: 'Arial', sans-serif;
+            /* Set font family */
+        }
+
+        .tenets-content p {
+            margin-bottom: 15px;
+            /* Space below paragraphs */
+            line-height: 1.6;
+            /* Improve readability */
+            font-family: 'Arial', sans-serif;
+            /* Set font family */
+        }
+
+        .ad-sidebar img {
+            display: block;
+            /* Ensure images are block level */
+            max-width: 100%;
+            /* Images are responsive */
+            height: auto;
+            /* Maintain aspect ratio */
+            margin-bottom: 20px;
+            /* Space between images */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main-content-container {
+                flex-direction: column;
+                /* Stack items vertically on small screens */
+            }
+
+            .tenets-content {
+                padding-right: 0;
+                padding-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main Navigation -->
+    <div id="fixed-header-container">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="top-bar-content">
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <a href="https://web.facebook.com/thecoplc" class="social-icon" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/thecoplc?s=11&t=Hp2vQ5HEypU3SEowUSDWGA" class="social-icon" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCEYJLi3phdzLXeg_ZQI3V8g" class="social-icon"
+                        target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.instagram.com/thecoplapazcentral/?hl=en" class="social-icon" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@thecoplapazcentral?lang=en" class="social-icon" target="_blank">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <a href="#" class="action-btn">
+                        <i class="fas fa-broadcast-tower"></i>
+                        <span>ONLINE RADIO</span>
+                    </a>
+                    <a href="https://maps.app.goo.gl/4Ne25oWe4e5LGDSG7?g_st=ic" class="action-btn" target="_blank">
+                        <i class="fas fa-church"></i>
+                        <span>FIND A CHURCH</span>
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i class="fas fa-play"></i>
+                        <span>WATCH LIVE SERVICE</span>
+                    </a>
+                </div>
+
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <div class="lang-btn">
+                        <img src="../images/uk-flag.png" alt="English" class="flag-icon">
+                        <span class="lang-text">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation (blue background) -->
+        <header id="site-header">
+            <nav class="navbar main-navbar">
+                <div class="logo">
+                    <img src="../images/logo.png" alt="Church Logo" class="logo-img">
+                    <div class="logo-text">
+                        <span class="logo-title">THE CHURCH OF PENTECOST</span>
+                        <span class="logo-subtitle">LAPAZ CENTRAL</span>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">ABOUT</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="history.html">History</a></li>
+                            <li><a href="tenant-beliefs.html">Tenants & Beliefs</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="auditorium.html">Auditorium</a></li>
+                            <li><a href="vision-2028.html">Vision 2028</a></li>
+                            <li><a href="board-committees.html">Board & Committees</a></li>
+                            <li><a href="our-activities.html">Our Activities</a></li>
+                            <li><a href="statistics.html">Statistics</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">LEADERSHIP</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="leadership.html#pastors">Pastors</a></li>
+                            <li><a href="leadership.html#elders">Elders</a></li>
+                            <li><a href="leadership.html#deacons">Deacons</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">MINISTRIES</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="children-ministry.html">Children's Ministry</a></li>
+                            <li><a href="youth-ministry.html">Youth Ministry</a></li>
+                            <li><a href="women-ministry.html">Women's Ministry</a></li>
+                            <li><a href="pemem-ministry.html">PEMEM</a></li>
+                            <li><a href="evangelism-ministry.html">Evangelism Ministry</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="missions.html" class="dropdown-toggle">MISSIONS</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="missions.html#local">Local Missions</a></li>
+                            <li><a href="missions.html#international">International Missions</a></li>
+                            <li><a href="missions.html#partners">Mission Partners</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="media.html" class="dropdown-toggle">MEDIA</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="media.html#sermons">Sermons</a></li>
+                            <li><a href="media.html#videos">Videos</a></li>
+                            <li><a href="media.html#photos">Photo Gallery</a></li>
+                            <li><a href="media.html#news">News & Events</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+                <div class="nav-search">
+                    <i class="fas fa-search"></i>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <!-- Beliefs Hero Section -->
+    <section class="beliefs-hero">
+        <div class="beliefs-hero-content">
+        </div>
+    </section>
+
+    <main>
+        <div class="main-content-container">
+            <div class="tenets-content">
+                <p>Pentecostals came out of the Evangelicals; thus, our theology is similar to theirs. However, there
+                    are a few significant divergent views, especially when it comes to the gifts of the Spirit and
+                    healing. Over the years, The Church of Pentecost, coming from the Apostolic Church has held on to
+                    the beliefs of the Pentecostal churches, which began in the early twentieth century, often referred
+                    to as classical Pentecostals. However, there are also some minor differences among these Pentecostal
+                    churches. As new churches are established, almost daily, and new doctrines keep emerging, it is not
+                    uncommon for old churches to lose or adulterate their core doctrines.</p>
+
+                <p>The Church of Pentecost deems our tenets or beliefs as one of the most critical aspects of our
+                    worship because it forms the basics of the Christian doctrine. Once you get it right, you will be
+                    able to grow in the Christian faith.</p>
+
+                <p>For this reason, the founding fathers and other leaders of the church have prayerfully and
+                    thoughtfully selected 11 doctrinal beliefs of The Church of Pentecost with accompanying Scriptures
+                    to facilitate study and understanding. These basic doctrines of The Church of Pentecost, which we
+                    jealously guard, are as follows:</p>
+
+                <h3>THE BIBLE</h3>
+                <p>We believe in the divine inspiration and authority of the Holy Scriptures. That the Bible is
+                    infallible in its declaration, final in its authority, comprehensive and all-sufficient in its
+                    provisions. (2 Timothy 3:16, 17; 2 Peter 1:20-21).</p>
+
+                <h3>THE ONE TRUE GOD</h3>
+                <p>We believe in the existence of the One True God, Elohim, maker of the whole universe; indefinable but
+                    revealed as Triune God – the Father, the Son and the Holy Spirit (Genesis 1:1; Genesis 1:26; Matthew
+                    3:16, 17; 28:19; 2 Corinthians 13:14); one in nature, essence and attributes – Omnipotent
+                    (Deuteronomy 6:4; Job 42:2; Isaiah 46:9, 10; Revelation 19:6); Omnipresent (Psalm 139:7-12; 147:5);
+                    Omniscient (Job 42:2; Isaiah 46:9, 10; Acts 5:4-5);</p>
+
+                <h3>THE DEPRAVED NATURE OF HUMANITY</h3>
+                <p>We believe that "all have sinned and come short of the glory of God" (Genesis 3:1-19; Isaiah 53:6;
+                    Romans 3:23), and are subject to eternal punishment (Matthew 13:41, 42; Romans 6:23), and need
+                    Repentance (Acts 2:38; Matthew 4:17; Acts 20:21) and Regeneration (John 3:3, 5; Titus 3:5).</p>
+
+                <h3>THE SAVIOUR</h3>
+                <p>We believe humanity's need of a Saviour has been met in the person of Jesus Christ (Matthew 1:21;
+                    John 4:42; Acts 2:36; Ephesians 5:23; Philippians 2:6-11), because of His Deity (Isaiah 9:6, John
+                    1:1; John 20:28; Romans 9:5; Titus 2:13-14), Virgin Birth (Isaiah 7:14; Matthew 1:18; Luke 1:25-26),
+                    Atoning death (Romans 3:25; Hebrews 9:22; 1 John 2:2), Resurrection (Matthew 28:5-7; Acts 2:24; Acts
+                    2:36; Acts 10:39-40; 1 Corinthians 15:3-4) and Ascension (Acts 1:9-11; Acts 2:33-36), His Abiding
+                    Intercession (Romans 8:34; Hebrews 7:25) and His second coming to judge the living and the dead
+                    (Acts 1:11; Acts 10:42; 1 Thessalonians 4:16-18, 2 Timothy 4:1; Revelation 22:12, 20)</p>
+
+                <h3>REPENTANCE, JUSTIFICATION AND SANCTIFICATION</h3>
+                <p>We believe all humans have to repent and confess their sins before God (Luke 15:7; Acts 2:38; Acts
+                    3:19; Acts 17:30), and believe in the vicarious death of Jesus Christ before they can be justified
+                    before God (Romans 4:25; 5:1). We believe in the sanctification of the believer through the working
+                    of the Holy Spirit (1 Corinthians 1:30; 6:11) and God's gift of eternal life to the believer (John
+                    17:2, 3; John 10:27, 28; Romans 6:23b; 1John 5:11-13).</p>
+
+                <h3>THE ORDINANCES OF BAPTISM AND THE LORD'S SUPPER OR COMMUNION</h3>
+                <p>We believe in the ordinance of Baptism by immersion as a testimony of a convert who has attained a
+                    responsible age of 13 years. (Matthew 3:16; Matthew 28:19; Mark 1:9,10; Mark 16:16; Acts 2:38).
+                    Infants and children are not baptised but are dedicated to the Lord (Mark 10:13-16; Luke 2:22-24,
+                    34). We believe in the ordinance of the Lord's Supper or Holy Communion, which should be partaken by
+                    all members who are in full fellowship (Luke 22:19, 20; Acts 20:7; 1 Corinthians 11:23-33).</p>
+
+                <h3>BAPTISM, GIFTS AND FRUIT OF THE HOLY SPIRIT</h3>
+                <p>We believe in the Baptism of the Holy Spirit for all believers with the initial evidence of speaking
+                    in tongues (Joel 2:28, 29; Acts 2:3,4,38,39; Acts 10:44-46; Acts 19:16), and in the operation of the
+                    gifts and fruit of the Holy Spirit (Romans 12:6-8; Galatians 5:22,23 and 1 Corinthians 12:8-11;
+                    28-30).</p>
+
+                <h3>DIVINE HEALING</h3>
+                <p>We believe that the healing of sicknesses and diseases is provided for God's people in the atonement
+                    (Isaiah 53:4,5; Matthew 8:7-13; 16,17; Mark 16:17,18; Luke 13:10-16; Acts 10:38; James 5:14-16).
+                    However, the Church is not opposed to medication by qualified medical practitioners.</p>
+
+                <h3>TITHES AND OFFERINGS</h3>
+                <p>We believe in tithing and in the giving of freewill offerings towards the furtherance of the cause of
+                    the Kingdom of God. We believe that God blesses a cheerful giver (Genesis 14:18-20; Malachi 3:6-10;
+                    Matthew 23:23; Acts 20:35; Hebrews 7:1-4; I Corinthians 16:1, 2; 2 Corinthians 9:1-9).</p>
+
+                <h3>THE SECOND COMING AND THE NEXT LIFE</h3>
+                <p>We believe in the second coming of Christ and the resurrection of the dead, both the saved and the
+                    unsaved. They that are saved to the resurrection of life and the unsaved to the resurrection of
+                    damnation (Daniel 12:2; Mark 13:26; John 5:28, 29; Acts 1:11; Acts 10:42; Romans 2:7-11; Romans
+                    6:23).</p>
+
+                <h3>MARRIAGE AND FAMILY LIFE</h3>
+                <p>We believe in the institution of marriage as a union established and ordained by God for the
+                    lifelong, intimate relationship between a man as husband and a woman as wife as biologically defined
+                    at birth. We believe that God instituted marriage primarily for mutual help, fellowship and comfort
+                    that one ought to have for the other and for the honourable procreation of children, and their
+                    training in love, obedience to the Lord and responsible citizenship. (Genesis 2:18, Genesis 21-25;
+                    Matthew 19:4-6; 1 Corinthians 7:1-2).</p>
+
+                <p>_______________</p>
+
+                <p>The above-mentioned doctrines of The Church of Pentecost have been expanded into a book titled "The
+                    Tenets Of The Church of Pentecost." You can get a copy here online: <a href="#">onlinestore</a></p>
+            </div>
+            <div class="ad-sidebar">
+                <!-- Add your advertising images here -->
+                <img src="../images/E-books-2-1536x1195.webp" alt="E-books available">
+                <img src="../images/podcast.webp" alt="Podcast">
+                <img src="../images/Sunday-service-1024x882.webp" alt="Sunday Service">
+                <img src="../images/Do-you-know-Jesus.webp" alt="Do you know Jesus?">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>THE CHURCH OF PENTECOST</h3>
+                <p>Lapaz District</p>
+                <p>Spreading the gospel and serving our community</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://web.facebook.com/thecoplc" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/thecoplc?s=11&t=Hp2vQ5HEypU3SEowUSDWGA" target="_blank"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/thecoplapazcentral/?hl=en" target="_blank"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UCEYJLi3phdzLXeg_ZQI3V8g" target="_blank"><i
+                            class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@thecoplapazcentral?lang=en" target="_blank"><i
+                            class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 THE CHURCH OF PENTECOST LAPAZ DISTRICT. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+    <script src="../dropdown.js"></script>
+</body>
+
+</html>

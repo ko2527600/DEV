@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media - THE CHURCH OF PENTECOST LAPAZ CENTRAL</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: #f7fafc;
+            color: #222;
+            margin: 0;
+        }
+        /* Main container now just for max-width and centering, no background/shadow */
+        main {
+            max-width: 1100px;
+            margin: 40px auto 0 auto; /* Adjust margin for spacing below header */
+            padding: 0; /* Remove padding from main, sections within will have it */
+        }
+        .flex {
+            display: flex;
+            align-items: center;
+        }
+        .space-x-4 > * + * {
+            margin-left: 1rem;
+        }
+        .border-b {
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .tab-button {
+            background: none;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #555;
+            padding: 0.75rem 1.5rem;
+            border-bottom: 2.5px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .tab-button::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2.5px;
+            background: #2563eb;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .tab-button:hover {
+            color: #2563eb;
+            background: rgba(37, 99, 235, 0.05);
+        }
+        .tab-button:hover::before {
+            width: 80%;
+        }
+        .tab-button.text-blue-600 {
+            color: #2563eb;
+            background: rgba(37, 99, 235, 0.05);
+        }
+        .tab-button.text-blue-600::before {
+            width: 80%;
+        }
+        .tab-content {
+            display: block;
+            margin-top: 0;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-radius: 0 0 12px 12px;
+            background: #fff;
+            margin-bottom: 24px;
+            animation: fadeIn 0.4s ease-out;
+            border: 1px solid rgba(37, 99, 235, 0.1);
+        }
+        .tab-content.hidden { display: none; }
+        .tab-content h2 {
+            color: #1e293b;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        .tab-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #2563eb;
+            border-radius: 2px;
+        }
+        .tab-content p {
+            color: #444;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .tab-content a {
+            color: #2563eb;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .tab-content a:hover {
+            text-decoration: underline;
+            color: #1d4ed8;
+        }
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        .grid-cols-1 { grid-template-columns: 1fr; }
+        @media (min-width: 768px) { .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .lg\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); } }
+        .bg-white { background: #fff; }
+        .rounded-xl { border-radius: 14px; }
+        .shadow { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .p-4 { padding: 1.25rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .w-full { width: 100%; }
+        .h-48 { height: 12rem; object-fit: cover; }
+        .object-cover { object-fit: cover; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .text-lg { font-size: 1.125rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-gray-600 { color: #475569; }
+        .text-gray-700 { color: #334155; }
+        .text-blue-600 { color: #2563eb !important; }
+        .aspect-video { aspect-ratio: 16/9; background: #e5e7eb; border-radius: 10px; overflow: hidden; }
+        .mb-4 { margin-bottom: 1rem; }
+        .list-disc { list-style-type: disc; }
+        .pl-5 { padding-left: 1.25rem; }
+        .gap-6 { gap: 1.5rem; }
+        .gap-4 { gap: 1rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+        .flex-wrap { flex-wrap: wrap; }
+        .items-center { align-items: center; }
+        .space-x-2 > * + * { margin-left: 0.5rem; }
+        .social-media a svg {
+            width: 22px;
+            height: 22px;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+            display: inline-block;
+        }
+        .social-media a {
+            font-size: 1rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 10px;
+            background: #f8fafc;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        .social-media a:hover {
+            background: #e0e7ef;
+            box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+            transform: translateY(-2px) scale(1.04);
+        }
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(10px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+
+        /* Styles for Meet the Team section */
+        .team-section-bg {
+            background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); /* Gradient from the image */
+            padding: 60px 24px; /* Added horizontal padding */
+            margin: 40px auto; /* Centering and spacing for the section */
+            border-radius: 18px;
+            max-width: 1100px; /* Constrain width like main content */
+            box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+        }
+        .team-section-bg h2 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+        }
+        .team-member-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .team-member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .team-member-card img {
+            width: 250px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px auto;
+            border: 4px solid #fff; /* White border around circular image */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .team-member-card h3 {
+            color: #1e293b;
+            font-size: 1.25rem;
+            margin-bottom: 5px;
+        }
+        .team-member-card p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.4;
+        }
+        .team-member-card .role {
+            font-weight: 600;
+            color: #2563eb;
+            margin-top: 10px;
+        }
+
+        /* Adjustments for Hero Banner to blend with header */
+        .hero-banner {
+            background-image: url('../images/hero-banner.jpg') !important; /* User-provided local image path */
+            background-blend-mode: overlay;
+            background-color: rgba(60, 80, 150, 0.4); /* Overlay color to blend with header */
+        }
+
+        /* Specific styles for the hero banner buttons */
+        .hero-banner button {
+            background: #2563eb;
+            color: #fff;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+        }
+
+        /* New styles for video display */
+        .video-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .video-item video {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Navigation -->
+    <div id="fixed-header-container">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="top-bar-content">
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <a href="https://web.facebook.com/thecoplc" class="social-icon" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/thecoplc?s=11&t=Hp2vQ5HEypU3SEowUSDWGA" class="social-icon" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCEYJLi3phdzLXeg_ZQI3V8g" class="social-icon" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.instagram.com/thecoplapazcentral/?hl=en" class="social-icon" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@thecoplapazcentral?lang=en" class="social-icon" target="_blank">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <a href="#" class="action-btn">
+                        <i class="fas fa-broadcast-tower"></i>
+                        <span>ONLINE RADIO</span>
+                    </a>
+                    <a href="https://maps.app.goo.gl/4Ne25oWe4e5LGDSG7?g_st=ic" class="action-btn" target="_blank">
+                        <i class="fas fa-church"></i>
+                        <span>FIND A CHURCH</span>
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i class="fas fa-play"></i>
+                        <span>WATCH LIVE SERVICE</span>
+                    </a>
+                </div>
+                
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <div class="lang-btn">
+                        <img src="../images/uk-flag.png" alt="English" class="flag-icon">
+                        <span class="lang-text">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation (blue background) -->
+        <header id="site-header">
+            <nav class="navbar main-navbar">
+                <div class="logo">
+                    <img src="../images/logo.png" alt="Church Logo" class="logo-img">
+                    <div class="logo-text">
+                        <span class="logo-title">THE CHURCH OF PENTECOST</span>
+                        <span class="logo-subtitle">LAPAZ CENTRAL</span>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">ABOUT</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="history.html">History</a></li>
+                            <li><a href="tenant-beliefs.html">Tenants & Beliefs</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="auditorium.html">Auditorium</a></li>
+                            <li><a href="vision-2028.html">Vision 2028</a></li>
+                            <li><a href="board-committees.html">Board & Committees</a></li>
+                            <li><a href="our-activities.html">Our Activities</a></li>
+                            <li><a href="statistics.html">Statistics</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">LEADERSHIP</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="leadership.html#pastors">Pastors</a></li>
+                            <li><a href="leadership.html#elders">Elders</a></li>
+                            <li><a href="leadership.html#deacons">Deacons</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">MINISTRIES</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="children-ministry.html">Children's Ministry</a></li>
+                            <li><a href="youth-ministry.html">Youth Ministry</a></li>
+                            <li><a href="women-ministry.html">Women's Ministry</a></li>
+                            <li><a href="pemem-ministry.html">PEMEM</a></li>
+                            <li><a href="evangelism-ministry.html">Evangelism Ministry</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="missions.html" class="dropdown-toggle">MISSIONS</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="missions.html#local">Local Missions</a></li>
+                            <li><a href="missions.html#international">International Missions</a></li>
+                            <li><a href="missions.html#partners">Mission Partners</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="media.html" class="dropdown-toggle">MEDIA</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="media.html#sermons">Sermons</a></li>
+                            <li><a href="media.html#videos">Videos</a></li>
+                            <li><a href="media.html#photos">Photo Gallery</a></li>
+                            <li><a href="media.html#news">News & Events</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+                <div class="nav-search">
+                    <i class="fas fa-search"></i>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <main>
+        <section class="page-title-section" style="background-color: #f8f8f8; padding: 40px 20px; text-align: center;">
+            <h1 style="color: #233e7c; font-size: 2.5em; margin-bottom: 10px;">Media</h1>
+            <p style="color: #666; font-size: 1.1em;">Explore our sermons, videos, photo gallery, and news.</p>
+        </section>
+
+        <section class="media-tabs-section" style="max-width: 1100px; margin: 0 auto; padding: 20px;">
+            <div class="flex border-b mb-6">
+                <button class="tab-button text-blue-600" data-tab="sermons">Sermons</button>
+                <button class="tab-button" data-tab="videos" id="videos-tab-button">Videos</button>
+                <button class="tab-button" data-tab="photos" id="photos-tab-button">Photo Gallery</button>
+                <button class="tab-button" data-tab="news">News & Events</button>
+            </div>
+
+            <div id="sermons-content" class="tab-content">
+                <h2>Recent Sermons</h2>
+                <p>Content for sermons goes here.</p>
+            </div>
+
+            <div id="videos-content" class="tab-content hidden">
+                <h2>Our Videos</h2>
+                <p>Loading videos...</p>
+            </div>
+
+            <div id="photos-content" class="tab-content hidden">
+                <h2>Photo Gallery</h2>
+                <p>Loading photos...</p>
+            </div>
+
+            <div id="news-content" class="tab-content hidden">
+                <h2>Latest News & Events</h2>
+                <p>Content for news and events goes here.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer style="background-color: #233e7c; color: white; padding: 40px 20px; text-align: center;">
+        <div class="footer-content" style="max-width: 1200px; margin: 0 auto;">
+            <p>&copy; 2024 The Church of Pentecost - Lapaz Central. All rights reserved.</p>
+            <div class="footer-links" style="margin-top: 15px;">
+                <a href="#" style="color: white; text-decoration: none; margin: 0 10px;">Privacy Policy</a>
+                <a href="#" style="color: white; text-decoration: none; margin: 0 10px;">Terms of Service</a>
+                <a href="#" style="color: white; text-decoration: none; margin: 0 10px;">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../supabase.js" type="module"></script>
+    <script type="module">
+        import { displayVideos, displayGalleryImages } from '../supabase.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            const activateTab = (tabName) => {
+                tabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+                tabButtons.forEach(button => {
+                    button.classList.remove('text-blue-600');
+                });
+
+                document.getElementById(`${tabName}-content`).classList.remove('hidden');
+                document.querySelector(`button[data-tab="${tabName}"]`).classList.add('text-blue-600');
+
+                if (tabName === 'videos') {
+                    displayVideos();
+                } else if (tabName === 'photos') {
+                    displayGalleryImages();
+                }
+            };
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    activateTab(button.dataset.tab);
+                });
+            });
+
+            // Activate default tab on load
+            activateTab('sermons'); // Or 'videos' if you want videos to be default
+
+            // If coming directly to the media page with a hash for videos or photos
+            if (window.location.hash === '#videos') {
+                activateTab('videos');
+            } else if (window.location.hash === '#photos') {
+                activateTab('photos');
+            }
+        });
+    </script>
+    <script src="../main.js"></script>
+    <script src="../dropdown.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medication Reminder - Email Verification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 16px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 32px;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .app-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin: 8px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .app-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .instructions {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 24px;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer {
+            margin-top: 32px;
+            color: #999;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">✅</div>
+        <h1>Email Verified Successfully!</h1>
+        <p class="subtitle">Your email address has been confirmed. You can now access all features of the Medication Reminder app.</p>
+        
+        <a href="#" class="app-button" onclick="tryOpenApp()">Return to App</a>
+        
+        <div class="instructions">
+            <strong>Next Steps:</strong><br>
+            1. Close this browser tab<br>
+            2. Open the Medication Reminder app on your device<br>
+            3. Sign in with your verified email address<br>
+            4. Start managing your medications!
+        </div>
+        
+        <div class="footer">
+            Medication Reminder App © 2024
+        </div>
+    </div>
+
+    <script>
+        function tryOpenApp() {
+            // Try to open the app using deep links (will be implemented later)
+            // For now, just show instructions
+            alert('Please open the Medication Reminder app on your device to continue.');
+        }
+        
+        // Auto-redirect after a few seconds
+        setTimeout(function() {
+            document.querySelector('.subtitle').innerHTML = 
+                'Email verified! Please return to the Medication Reminder app to continue.';
+        }, 2000);
+    </script>
+</body>
+</html>

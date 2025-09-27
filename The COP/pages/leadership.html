@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership - THE CHURCH OF PENTECOST LAPAZ CENTRAL</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Main Navigation -->
+    <div id="header-placeholder"></div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const headerPlaceholder = document.getElementById('header-placeholder');
+        headerPlaceholder.innerHTML = '<div style="text-align: center; padding: 1rem;">Loading header...</div>';
+        
+        fetch('header.html')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.text();
+          })
+          .then(data => {
+            headerPlaceholder.innerHTML = data;
+            // Initialize any header-specific JavaScript after loading
+            if (typeof initHeader === 'function') {
+              initHeader();
+            }
+          })
+          .catch(error => {
+            console.error('Error loading header:', error);
+            headerPlaceholder.innerHTML = '<div style="text-align: center; padding: 1rem; color: red;">Error loading header. Please refresh the page.</div>';
+          });
+      });
+    </script>
+
+    <main style="min-height: 400px; display: flex; align-items: center; justify-content: center;">
+        <h1>Leadership Page</h1>
+    </main>
+
+    <script src="../dropdown.js"></script>
+</body>
+</html> 

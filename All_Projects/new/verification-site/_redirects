@@ -1,0 +1,6 @@
+# Netlify redirects file
+# This ensures that any auth callback URLs work properly
+
+/auth/callback    /auth/callback/index.html    200
+/auth/*           /auth/callback/index.html    200
+/*                /index.html                  200

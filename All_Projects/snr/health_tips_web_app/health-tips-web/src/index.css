@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--bg: 255 255 255;
+		--fg: 17 24 39;
+	}
+	html, body, #root {
+		height: 100%;
+	}
+	body {
+		@apply bg-gradient-to-br from-blue-50 via-white to-green-50 text-gray-900 antialiased;
+		background-attachment: fixed;
+		position: relative;
+	}
+	
+	/* Add subtle background pattern */
+	body::before {
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: 
+			radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.03) 0%, transparent 50%),
+			radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.03) 0%, transparent 50%),
+			radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.03) 0%, transparent 50%);
+		pointer-events: none;
+		z-index: -1;
+	}
+	
+	/* Add floating geometric shapes */
+	body::after {
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: 
+			url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e5e7eb' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+		pointer-events: none;
+		z-index: -1;
+		opacity: 0.3;
+	}
+	
+	a {
+		@apply text-brand hover:text-brand-dark;
+	}
+}
+
+@layer components {
+	.btn {
+		@apply inline-flex items-center justify-center rounded-md border border-transparent bg-brand px-4 py-2 text-white shadow-sm transition hover:bg-brand-dark disabled:opacity-50 disabled:cursor-not-allowed;
+	}
+	.btn-secondary {
+		@apply inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 shadow-sm transition hover:bg-gray-50;
+	}
+	.input {
+		@apply block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder-gray-400 shadow-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30;
+	}
+	.textarea {
+		@apply block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder-gray-400 shadow-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30;
+	}
+	
+	/* Enhanced card styles with better shadows and backgrounds */
+	.card {
+		@apply bg-white/90 backdrop-blur-sm border border-white/20 shadow-lg shadow-gray-200/50 rounded-xl;
+	}
+	
+	/* Glass morphism effect for special elements */
+	.glass {
+		@apply bg-white/20 backdrop-blur-md border border-white/30 shadow-xl;
+	}
+	
+	/* Gradient text for headings */
+	.gradient-text {
+		@apply bg-gradient-to-r from-brand to-blue-600 bg-clip-text text-transparent;
+	}
+	
+	/* Search input specific styles for better visibility */
+	.search-input {
+		@apply bg-white border-2 border-gray-200 focus:border-brand focus:ring-4 focus:ring-brand/20;
+		background-color: white !important;
+	}
+}

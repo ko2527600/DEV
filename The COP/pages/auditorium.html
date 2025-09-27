@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Auditorium - The Church of Pentecost Lapaz Central</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: #233e7c;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        .dropdown-menu.show {
+            display: block;
+        }
+        .dropdown-menu li {
+            list-style: none;
+        }
+        .dropdown-menu li a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-menu li a:hover {
+            background-color: #1a3560;
+        }
+        .dropdown {
+            position: relative;
+        }
+        
+        /* Auditorium Slideshow Styles */
+        .auditorium-slideshow {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+            margin-top: 120px; /* Add space for fixed header */
+            z-index: 1;
+        }
+        
+        .auditorium-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Prevent image from moving when scrolling */
+        }
+        
+        .auditorium-slide.active {
+            opacity: 1;
+        }
+        
+        .auditorium-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        
+        .auditorium-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+            width: 90%;
+            max-width: 800px;
+        }
+        
+        .auditorium-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        
+        .auditorium-content p {
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+        
+        .auditorium-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+        
+        .auditorium-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .auditorium-dot.active {
+            background: white;
+        }
+        
+        .auditorium-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+            z-index: 3;
+        }
+        
+        .auditorium-nav-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .auditorium-nav-btn.prev {
+            left: 20px;
+        }
+        
+        .auditorium-nav-btn.next {
+            right: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .auditorium-slideshow {
+                height: 50vh;
+                margin-top: 100px; /* Adjust for mobile header height */
+            }
+            
+            .auditorium-content h1 {
+                font-size: 2rem;
+            }
+            
+            .auditorium-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Navigation -->
+    <div id="fixed-header-container">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="top-bar-content">
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <a href="https://web.facebook.com/thecoplc" class="social-icon" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/thecoplc?s=11&t=Hp2vQ5HEypU3SEowUSDWGA" class="social-icon" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCEYJLi3phdzLXeg_ZQI3V8g" class="social-icon" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.instagram.com/thecoplapazcentral/?hl=en" class="social-icon" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@thecoplapazcentral?lang=en" class="social-icon" target="_blank">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <a href="#" class="action-btn">
+                        <i class="fas fa-broadcast-tower"></i>
+                        <span>ONLINE RADIO</span>
+                    </a>
+                    <a href="https://maps.app.goo.gl/4Ne25oWe4e5LGDSG7?g_st=ic" class="action-btn" target="_blank">
+                        <i class="fas fa-church"></i>
+                        <span>FIND A CHURCH</span>
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i class="fas fa-play"></i>
+                        <span>WATCH LIVE SERVICE</span>
+                    </a>
+                </div>
+                
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <div class="lang-btn">
+                        <img src="../images/uk-flag.png" alt="English" class="flag-icon">
+                        <span class="lang-text">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Navigation (blue background) -->
+        <header id="site-header">
+            <nav class="navbar main-navbar">
+                <div class="logo">
+                    <img src="../images/logo.png" alt="Church Logo" class="logo-img">
+                    <div class="logo-text">
+                        <span class="logo-title">THE CHURCH OF PENTECOST</span>
+                        <span class="logo-subtitle">LAPAZ CENTRAL</span>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">ABOUT</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="history.html">History</a></li>
+                            <li><a href="tenant-beliefs.html">Tenants & Beliefs</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="auditorium.html">Auditorium</a></li>
+                            <li><a href="vision-2028.html">Vision 2028</a></li>
+                            <li><a href="board-committees.html">Board & Committees</a></li>
+                            <li><a href="our-activities.html">Our Activities</a></li>
+                            <li><a href="statistics.html">Statistics</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">LEADERSHIP</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="leadership.html#pastors">Pastors</a></li>
+                            <li><a href="leadership.html#elders">Elders</a></li>
+                            <li><a href="leadership.html#deacons">Deacons</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">MINISTRIES</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="ministries.html#children">Children's Ministry</a></li>
+                            <li><a href="ministries.html#youth">Youth Ministry</a></li>
+                            <li><a href="ministries.html#worship">Worship Ministry</a></li>
+                            <li><a href="ministries.html#outreach">Outreach Ministry</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="missions.html" class="dropdown-toggle">MISSIONS</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="missions.html#local">Local Missions</a></li>
+                            <li><a href="missions.html#international">International Missions</a></li>
+                            <li><a href="missions.html#partners">Mission Partners</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="media.html" class="dropdown-toggle">MEDIA</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="media.html#sermons">Sermons</a></li>
+                            <li><a href="media.html#videos">Videos</a></li>
+                            <li><a href="media.html#photos">Photo Gallery</a></li>
+                            <li><a href="media.html#news">News & Events</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+                <div class="nav-search">
+                    <i class="fas fa-search"></i>
+                </div>
+            </nav>
+        </header>
+    </div>
+    <!-- Auditorium Slideshow Hero Section -->
+    <section class="auditorium-slideshow">
+        <div class="auditorium-slide active" style="background-image: url('../images/Auditoruim slides/IMG-20250519-WA0083.jpg');"></div>
+        <div class="auditorium-slide" style="background-image: url('../images/Auditoruim slides/IMG-20250519-WA0085.jpg');"></div>
+        <div class="auditorium-slide" style="background-image: url('../images/Auditoruim slides/IMG-20250519-WA0087.jpg');"></div>
+        <div class="auditorium-slide" style="background-image: url('../images/Auditoruim slides/IMG-20250519-WA0114.jpg');"></div>
+        <div class="auditorium-slide" style="background-image: url('../images/Auditoruim slides/IMG-20250519-WA0115.jpg');"></div>
+        <div class="auditorium-slide" style="background-image: url('../images/Auditoruim slides/IMG-20250519-WA0116.jpg');"></div>
+        <div class="auditorium-slide" style="background-image: url('../images/Auditoruim slides/IMG-20250519-WA0117.jpg');"></div>
+        
+        <div class="auditorium-content">
+            <h1>Our Auditorium</h1>
+            <p>A place of worship, fellowship, and spiritual growth</p>
+        </div>
+        
+        <button class="auditorium-nav-btn prev" onclick="changeAuditoriumSlide(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="auditorium-nav-btn next" onclick="changeAuditoriumSlide(1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <div class="auditorium-nav">
+            <span class="auditorium-dot active" onclick="currentAuditoriumSlide(1)"></span>
+            <span class="auditorium-dot" onclick="currentAuditoriumSlide(2)"></span>
+            <span class="auditorium-dot" onclick="currentAuditoriumSlide(3)"></span>
+            <span class="auditorium-dot" onclick="currentAuditoriumSlide(4)"></span>
+            <span class="auditorium-dot" onclick="currentAuditoriumSlide(5)"></span>
+            <span class="auditorium-dot" onclick="currentAuditoriumSlide(6)"></span>
+            <span class="auditorium-dot" onclick="currentAuditoriumSlide(7)"></span>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>THE CHURCH OF PENTECOST</h3>
+                <p>Lapaz District</p>
+                <p>Spreading the gospel and serving our community</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#welcome">Welcome</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#give">Give</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://web.facebook.com/thecoplc" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/thecoplc?s=11&t=Hp2vQ5HEypU3SEowUSDWGA" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/thecoplapazcentral/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UCEYJLi3phdzLXeg_ZQI3V8g" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@thecoplapazcentral?lang=en" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 THE CHURCH OF PENTECOST LAPAZ DISTRICT. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="../main.js"></script>
+    <script src="../dropdown.js"></script>
+    
+    <script>
+        // Auditorium Slideshow Functionality
+        let auditoriumSlideIndex = 1;
+        showAuditoriumSlides(auditoriumSlideIndex);
+
+        function changeAuditoriumSlide(n) {
+            showAuditoriumSlides(auditoriumSlideIndex += n);
+        }
+
+        function currentAuditoriumSlide(n) {
+            showAuditoriumSlides(auditoriumSlideIndex = n);
+        }
+
+        function showAuditoriumSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("auditorium-slide");
+            let dots = document.getElementsByClassName("auditorium-dot");
+            
+            if (n > slides.length) {auditoriumSlideIndex = 1}
+            if (n < 1) {auditoriumSlideIndex = slides.length}
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            slides[auditoriumSlideIndex-1].classList.add("active");
+            dots[auditoriumSlideIndex-1].classList.add("active");
+        }
+
+        // Auto-advance slides every 5 seconds
+        setInterval(function() {
+            changeAuditoriumSlide(1);
+        }, 5000);
+    </script>
+</body>
+</html>
